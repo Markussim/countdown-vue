@@ -5,23 +5,25 @@ export default {
       type: Number,
       default: 0,
     },
-    timeUnit: String,
+    timeUnit: {
+      type: String,
+      default: "seconds",
+    },
   },
   computed: {
     seconds() {
-      return (this.timeLeft / 1000).toFixed(3) + " seconds left";
+      return (this.timeLeft / 1000).toFixed(3);
     },
     minutes() {
-      return (this.timeLeft / 1000 / 60).toFixed(3) + " minutes left";
+      return (this.timeLeft / 1000 / 60).toFixed(3);
     },
     hours() {
-      return (this.timeLeft / 1000 / 60 / 60).toFixed(3) + " hours left";
+      return (this.timeLeft / 1000 / 60 / 60).toFixed(3);
     },
     days() {
-      return (this.timeLeft / 1000 / 60 / 60 / 24).toFixed(3) + " days left";
+      return (this.timeLeft / 1000 / 60 / 60 / 24).toFixed(3);
     },
     timeLeftFormatted() {
-      console.log(this.timeUnit);
       if (this.timeUnit === "seconds") {
         return this.seconds;
       } else if (this.timeUnit === "minutes") {
@@ -37,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <p>{{ timeLeftFormatted }}</p>
+  <p>{{ timeLeftFormatted }} {{ timeUnit }} left</p>
 </template>
 
 <style scoped>

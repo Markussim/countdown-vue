@@ -12,6 +12,7 @@ export default {
       countDownDate: 1644094573523,
       inputTime: "pucko",
       timeUnit: "hours",
+      order: ["seconds", "minutes", "hours", "days"],
     };
   },
   mounted() {
@@ -58,7 +59,12 @@ export default {
     v-model="inputTime"
     :timeUnit="timeUnit"
   />
-  <CountBox v-if="timeLeft > 0" :timeLeft="timeLeft" />
+  <CountBox
+    v-for="(timeUnit, index) in order"
+    v-if="timeLeft > 0"
+    :timeLeft="timeLeft"
+    :timeUnit="timeUnit"
+  />
 </template>
 
 <style>
