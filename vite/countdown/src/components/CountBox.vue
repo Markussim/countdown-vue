@@ -1,21 +1,11 @@
 <script>
 export default {
-  data() {
-    return {
-      timeLeft: 0,
-      countDownDate: 1644094573523,
-    };
-  },
-  mounted() {
-    this.updateTimeLeft();
-  },
-  methods: {
-    updateTimeLeft() {
-      this.timeLeft = this.countDownDate - Date.now();
-      window.requestAnimationFrame(() => {
-        this.updateTimeLeft();
-      });
+  props: {
+    timeLeft: {
+      type: Number,
+      default: 0,
     },
+    timeUnit: String,
   },
   computed: {
     seconds() {
@@ -30,12 +20,24 @@ export default {
     days() {
       return (this.timeLeft / 1000 / 60 / 60 / 24).toFixed(3) + " days left";
     },
+    timeLeftFormatted() {
+      console.log(this.timeUnit);
+      if (this.timeUnit === "seconds") {
+        return this.seconds;
+      } else if (this.timeUnit === "minutes") {
+        return this.minutes;
+      } else if (this.timeUnit === "hours") {
+        return this.hours;
+      } else if (this.timeUnit === "days") {
+        return this.days;
+      }
+    },
   },
 };
 </script>
 
 <template>
-  <p>{{ seconds }}</p>
+  <p>{{ timeLeftFormatted }}</p>
 </template>
 
 <style scoped>
