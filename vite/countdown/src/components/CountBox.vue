@@ -39,11 +39,5 @@ export default {
 </script>
 
 <template>
-  <p>{{ timeLeftFormatted }} {{ timeUnit }} left</p>
+  <p>{{ timeLeftFormatted }} in {{ timeUnit }}</p>
 </template>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>
