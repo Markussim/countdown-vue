@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="vue.js"></script>
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Countdown</title>
-</head>
-
-<body>
-    <div id="main">
-        <input id="clear" type="button" value="Change time" v-on:click="clearTime">
-        <input type="text" id="timeInput" v-on:input="timeIn" v-model="time" v-bind:class="hideClass"
-            v-bind:disabled="disabled">
-
-
-        <div id="countDown">
-            <p v-for="time in times" :key="time">
-                {{ time.time }} in {{ time.unit }}
-            </p>
-        </div>
-
-    </div>
-
-    </div>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
