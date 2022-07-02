@@ -1,21 +1,28 @@
 <script setup lang="ts">
-  // This starter template is using Vue 3 <script setup> SFCs
-  // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-  import HelloWorld from './components/HelloWorld.vue';
+  import { watch, ref } from 'vue';
+
+  let countdowndate = new Date();
+  countdowndate.setHours(17);
+  countdowndate.setMinutes(0);
+  countdowndate.setSeconds(0);
+  countdowndate.setMilliseconds(0);
+
+  const minutesLeft = ref('');
+
+  // Update the minutesLeft every frame
+  const updateMinutesLeft = () => {
+    const now = new Date();
+    const diff = countdowndate.getTime() - now.getTime();
+    const minutes = diff / 1000 / 60;
+    minutesLeft.value = minutes.toFixed(2);
+    requestAnimationFrame(updateMinutesLeft);
+  };
+
+  requestAnimationFrame(updateMinutesLeft);
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div>
+    {{ minutesLeft }}
+  </div>
 </template>
-
-<style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-</style>
